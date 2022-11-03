@@ -1,0 +1,30 @@
+{
+  "name": "formatheywhalenotebook",
+  "version": "1.0.0",
+  "description": "tampermonkey script for formating heywhale notebook",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "test",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leolewin/formatHeyWhaleNoteBook.git"
+  },
+  "keywords": [
+    "tampermonkey"
+  ],
+  "author": "leolewin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leolewin/formatHeyWhaleNoteBook/issues"
+  },
+  "homepage": "https://github.com/Leolewin/formatHeyWhaleNoteBook#readme",
+  "dependencies": {
+    "pangu": "^4.0.7"
+  },
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
