@@ -31,7 +31,7 @@ import pangu from 'pangu';
       const markdownChilds = [...document.querySelectorAll('.cell--markdown')];
       GM_log(pythonCodechilds.length);
 
-      focusToCodeItem(0, pythonCodechilds, content);
+      //focusToCodeItem(0, pythonCodechilds, content);
       focusMDItem(0, markdownChilds, content);
   }
 
