@@ -1,4 +1,4 @@
-import pangu from 'pangu';
+// import pangu from 'pangu';
 
 const insertPangu = () => {
   var head = document.getElementsByTagName('head')[0];
