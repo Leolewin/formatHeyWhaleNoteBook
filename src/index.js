@@ -35,23 +35,23 @@ import pangu from 'pangu';
       focusMDItem(0, markdownChilds, content);
   }
 
-  const focusToCodeItem = (idx, items, content) => {
-      if (idx >= items.length) return;
-      const child = items[idx];
-      child.scrollIntoView();
-      child.click();
-      content.scrollTop = content.scrollTop - 20;
-      GM_log('scroll to:', child, idx);
+//   const focusToCodeItem = (idx, items, content) => {
+//       if (idx >= items.length) return;
+//       const child = items[idx];
+//       child.scrollIntoView();
+//       child.click();
+//       content.scrollTop = content.scrollTop - 20;
+//       GM_log('scroll to:', child, idx);
 
-      setTimeout(() => {
-          // format the python code by click the page pretty button
-          child.parentNode.parentNode.querySelector('.cell__toolbar').childNodes[2].click();
-      }, 0)
+//       setTimeout(() => {
+//           // format the python code by click the page pretty button
+//           child.parentNode.parentNode.querySelector('.cell__toolbar').childNodes[2].click();
+//       }, 0)
 
-      setTimeout(() => {
-          focusToCodeItem(idx + 1, items, content);
-      }, 2000)
-  }
+//       setTimeout(() => {
+//           focusToCodeItem(idx + 1, items, content);
+//       }, 2000)
+//   }
 
   const focusMDItem = (idx, items, content) => {
     if (idx >= items.length) return;
