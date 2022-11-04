@@ -1,19 +1,4 @@
-// ==UserScript==
-// @name         format heywhale
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        https://www.heywhale.com/notebooks/run/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=heywhale.com
-// @grant        GM_log
-// @grant        unsafeWindow
-// ==/UserScript==
-
-
 import pangu from 'pangu';
-
-window.$pangu = pangu;
 
 const insertPangu = () => {
   var head = document.getElementsByTagName('head')[0];
@@ -22,7 +7,7 @@ const insertPangu = () => {
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js';
   script.onload = () => {
       GM_log('script loaded')
-      unsafeWindow.pangu = pangu;
+      unsafeWindow.window.$pangu = pangu;
   }
   head.appendChild(script);
 };
