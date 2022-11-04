@@ -6,7 +6,7 @@ const insertPangu = () => {
   script.type = 'text/javascript';
   script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js';
   script.onload = () => {
-      GM_log('script loaded')
+      GM_log('script loaded leon')
       unsafeWindow.window.$pangu = pangu;
   }
   head.appendChild(script);
