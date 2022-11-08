@@ -69,7 +69,7 @@ const formatBySav = () => {
             cell.source = pangu.spacing(cell.source);
           }
           if (cell.cell_type === 'code') {
-            cell.source = cell.source.replace(/.*(\n)$/, '');
+            cell.source = cell.source.replace(/(\n)$/, '');
           }
           return cell;
         });
