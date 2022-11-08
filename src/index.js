@@ -23,7 +23,6 @@
       if (idx >= items.length) {
         content.scrollTop = 0;
         document.querySelector('ul.notebook__actions').childNodes[0].click();
-        setTimeout(() => location.reload(), 2000);
         return;
       }
       const child = items[idx];
