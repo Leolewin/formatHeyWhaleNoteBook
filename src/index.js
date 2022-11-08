@@ -16,7 +16,6 @@
       const content = document.querySelector('.notebook__content');
       const pythonCodechilds = [...document.querySelectorAll('.cell__editor-wrapper')];
       GM_log(pythonCodechilds.length);
-
       formatCode(0, pythonCodechilds, content);
   }
 
@@ -24,6 +23,7 @@
       if (idx >= items.length) {
         content.scrollTop = 0;
         document.querySelector('ul.notebook__actions').childNodes[0].click();
+        setTimeout(() => location.reload(), 2000);
         return;
       }
       const child = items[idx];
@@ -77,15 +77,10 @@ const formatBySav = () => {
 
         GM_log('updateData', updateData)
         data = JSON.stringify(updateData);
+        shouldFormat = false;
       }
     }
     catch (err) {}
     originSend.apply(this, [data]);
-    if (shouldFormat) {
-      setTimeout(() => {
-        shouldFormat = false;
-        location.reload();
-      }, 2000);
-    }
   };
 }
