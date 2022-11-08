@@ -18,7 +18,6 @@
       GM_log(pythonCodechilds.length);
 
       formatCode(0, pythonCodechilds, content);
-
   }
 
   const formatCode = (idx, items, content) => {
@@ -43,11 +42,9 @@
       }, 500)
   }
 
-  setTimeout(async () =>{
-
+  setTimeout(() =>{
       createFormatButton();
       formatBySav();
-
   }, 5000)
   // Your code here...
 })();
@@ -79,14 +76,16 @@ const formatBySav = () => {
         });
 
         GM_log('updateData', updateData)
-        shouldFormat = false;
         data = JSON.stringify(updateData);
       }
     }
     catch (err) {}
     originSend.apply(this, [data]);
-    setTimeout(() => {
-      location.reload();
-    }, 2000);
+    if (shouldFormat) {
+      setTimeout(() => {
+        shouldFormat = false;
+        location.reload();
+      }, 2000);
+    }
   };
 }
