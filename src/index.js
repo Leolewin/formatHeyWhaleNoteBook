@@ -68,7 +68,7 @@ const formatBySav = () => {
           if (cell.cell_type === 'markdown') {
             cell.source = pangu.spacing(cell.source);
           }
-          else if (cell.cell_type === 'code') {
+          if (cell.cell_type === 'code') {
             cell.source = cell.source.replace(/.*(\n)$/, '');
           }
           return cell;
