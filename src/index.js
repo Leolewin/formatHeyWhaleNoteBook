@@ -72,6 +72,9 @@ const formatBySav = () => {
           if (cell.cell_type === 'markdown') {
             cell.source = pangu.spacing(cell.source);
           }
+          else if (cell.cell_type === 'code') {
+            cell.source = cell.source.replace(/.*(\n)$/, '');
+          }
           return cell;
         });
 
@@ -82,5 +85,8 @@ const formatBySav = () => {
     }
     catch (err) {}
     originSend.apply(this, [data]);
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
   };
 }
