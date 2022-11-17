@@ -70,6 +70,7 @@ const formatBySav = () => {
             cell.source = cell.source.replace(/(\*\*)\s(.*?)\s(\*\*)/g, '$1$2$3').replace(/(\*)\s(.*?)\s(\*)/g, '$1$2$3');
             cell.source.match(/\[.*\]\((https?:\/\/(([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+\.)+[a-zA-Z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?\)/ig)
               .every(url => {
+                GM_log('matched URL:', url);
                 cell.source.replaceAll(url, url.replaceAll(/\s+/g, ''));
                 return true;
               });
