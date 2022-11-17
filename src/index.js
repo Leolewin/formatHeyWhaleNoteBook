@@ -67,6 +67,12 @@ const formatBySav = () => {
         updateData.Content.cells = updateData.Content.cells.map((cell, idx) => {
           if (cell.cell_type === 'markdown') {
             cell.source = pangu.spacing(cell.source);
+            cell.source = cell.source.replace(/(\*\*)\s(.*?)\s(\*\*)/g, '$1$2$3').replace(/(\*)\s(.*?)\s(\*)/g, '$1$2$3');
+            cell.source.match(/\[.*\]\((https?:\/\/(([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+\.)+[a-zA-Z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?\)/ig)
+              .every(url => {
+                cell.source.replaceAll(url, url.replaceAll(/\s+/g, ''));
+                return true;
+              });
           }
           if (cell.cell_type === 'code') {
             cell.source = cell.source.replace(/(\n)$/, '');
@@ -81,5 +87,9 @@ const formatBySav = () => {
     }
     catch (err) {}
     originSend.apply(this, [data]);
+
+    //reset XMLHttpRequest
+    unsafeWindow.window.XMLHttpRequest.prototype.open = originOpen;
+    unsafeWindow.window.XMLHttpRequest.prototype.send = originSend;
   };
 }
