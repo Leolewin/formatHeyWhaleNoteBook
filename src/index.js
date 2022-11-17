@@ -88,9 +88,5 @@ const formatBySav = () => {
     }
     catch (err) {}
     originSend.apply(this, [data]);
-
-    //reset XMLHttpRequest
-    unsafeWindow.window.XMLHttpRequest.prototype.open = originOpen;
-    unsafeWindow.window.XMLHttpRequest.prototype.send = originSend;
   };
 }
