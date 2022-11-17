@@ -57,22 +57,20 @@ const formatBySav = () => {
     shouldFormat = method === 'PUT' && /(\/api\/notebooks\/).*/.test(url);
     originOpen.apply(this, arguments);
   };
-  
+
   unsafeWindow.window.XMLHttpRequest.prototype.send = function (data) {
     try {
       const updateData = JSON.parse(data);
-      GM_log('updateData', updateData)
-      if (updateData && updateData?.Content?.cells)
+      if (updateData && updateData?.Content?.cells.length)
       {
-       
         updateData.Content.cells = updateData.Content.cells.map((cell, idx) => {
           if (cell.cell_type === 'markdown') {
             cell.source = pangu.spacing(cell.source);
             cell.source = cell.source.replace(/(\*\*)\s(.*?)\s(\*\*)/g, '$1$2$3').replace(/(\*)\s(.*?)\s(\*)/g, '$1$2$3');
-            cell.source.match(/\[.*\]\((https?:\/\/(([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+\.)+[a-zA-Z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?\)/ig)
-              .every(url => {
-                GM_log('matched URL:', url);
-                cell.source.replaceAll(url, url.replaceAll(/\s+/g, ''));
+
+            cell.source.match(/\[.*\]\(((https?:\/\/|www\.)(([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+\.)+[a-zA-Z]+)(:\d+)?(\/.*)?(\?.*)?(#.*)?\)/ig)
+              ?.every(url => {
+                cell.source = cell.source.replaceAll(url, url.replaceAll(/\s+/g, ''));
                 return true;
               });
           }
