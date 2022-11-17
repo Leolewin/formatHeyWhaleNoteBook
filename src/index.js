@@ -61,6 +61,7 @@ const formatBySav = () => {
   unsafeWindow.window.XMLHttpRequest.prototype.send = function (data) {
     try {
       const updateData = JSON.parse(data);
+      GM_log('updateData', updateData)
       if (updateData && updateData?.Content?.cells)
       {
        
