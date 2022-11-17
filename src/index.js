@@ -61,7 +61,7 @@ const formatBySav = () => {
   unsafeWindow.window.XMLHttpRequest.prototype.send = function (data) {
     try {
       const updateData = JSON.parse(data);
-      if (updateData && updateData?.Content?.cells && shouldFormat)
+      if (updateData && updateData?.Content?.cells)
       {
        
         updateData.Content.cells = updateData.Content.cells.map((cell, idx) => {
