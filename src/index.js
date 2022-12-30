@@ -5,9 +5,9 @@
       unsafeWindow.window.$pangu = pangu;
       const ghostNode = document.querySelector('.ivu-btn-ghost');
       const formatNode = ghostNode.cloneNode(true);
-      formatNode.querySelector('.output-menu__btn-text').innerText = "format";
+      formatNode.querySelector('span').innerText = "format";
       ghostNode.parentNode.prepend(formatNode);
-      formatNode.querySelector('.iconfont').remove();
+      //formatNode.querySelector('.iconfont').remove();
       formatNode.setAttribute( 'style', 'background-color: #0969da !important; color: white');
       formatNode.onclick = formatPage;
   };
