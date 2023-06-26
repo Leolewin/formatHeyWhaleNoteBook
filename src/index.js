@@ -1,14 +1,14 @@
-// import pangu from 'pangu';
-
 (function() {
   const createFormatButton = () => {
       unsafeWindow.window.$pangu = pangu;
-      const ghostNode = document.querySelector('.ivu-btn-ghost');
+      const header = document.querySelector('.header');
+      const leftCommands = header.childNodes[header.childNodes.length - 1];
+      const leftCommandsButtons = leftCommands.querySelectorAll('button');
+      const ghostNode = leftCommandsButtons[0];
       const formatNode = ghostNode.cloneNode(true);
-      formatNode.querySelector('span').innerText = "format";
+      formatNode.textContent = "Format Notebook";
       ghostNode.parentNode.prepend(formatNode);
-      //formatNode.querySelector('.iconfont').remove();
-      formatNode.setAttribute( 'style', 'background-color: #0969da !important; color: white');
+      formatNode.setAttribute( 'style', 'background-color: #0969da !important; color: white;');
       formatNode.onclick = formatPage;
   };
 
@@ -41,12 +41,26 @@
       }, 500)
   }
 
-  setTimeout(() =>{
-      createFormatButton();
-      formatBySav();
-  }, 5000)
+  const init = () => {
+    const timer = setTimeout(() =>{
+      const isDownloading = document.getElementsByClassName('download-progress__btn').length > 0;
+      GM_log('isDownloading', isDownloading);
+      if (isDownloading) {
+        clearTimeout(timer);
+        return init();
+      }
+      else {
+        createFormatButton();
+        formatBySav();
+      }
+    }, 5000)
+  };
+
+  init();
   // Your code here...
 })();
+
+
 
 const formatBySav = () => {
   let shouldFormat = false;
@@ -88,4 +102,4 @@ const formatBySav = () => {
     catch (err) {}
     originSend.apply(this, [data]);
   };
-}
+};
