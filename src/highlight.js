@@ -17,8 +17,8 @@ const operations = {
 const operationCustomAttribute = 'data-operationType';
 
 const _getSelection = window.getSelection || window.document.getSelection;
-const BLUE_HIGHLIGHT_START_MARK = '<mark style="background: linear-gradient(#D9ECFA 90%, transparent 100%); padding: 1px 1px;">';
-const UNDERLINE_START_MARK = '<mark style="border-bottom: 3px solid #EC407A; padding: 0px 1px; margin: 0 -2px; background: none;">'
+// const BLUE_HIGHLIGHT_START_MARK = '<mark style="background: linear-gradient(#D9ECFA 90%, transparent 100%); padding: 1px 1px;">';
+// const UNDERLINE_START_MARK = '<mark style="border-bottom: 3px solid #EC407A; padding: 0px 1px; margin: 0 -2px; background: none;">'
 const END_MARK = '</mark>';
 
 
